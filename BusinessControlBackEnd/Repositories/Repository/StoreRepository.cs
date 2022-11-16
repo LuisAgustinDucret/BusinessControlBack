@@ -13,17 +13,17 @@ namespace BusinessControlBackEnd.Repositories
         public void CreateStore(Store store)
         {
             if (store == null) throw new ArgumentNullException(nameof(store));
-            _context.Stores.Add(store);
+            _context.Store.Add(store);
         }
 
         public IEnumerable<Store> GetAllStores()
         {
-            return _context.Stores.ToList();
+            return _context.Store.ToList();
         }
 
         public Store GetStoreById(int id)
         {
-            return _context.Stores.FirstOrDefault(p => p.Id == id) ?? new Store();
+            return _context.Store.FirstOrDefault(p => p.Id == id) ?? new Store();
         }
 
         public bool SaveChanges()

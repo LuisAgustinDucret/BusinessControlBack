@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
 using BusinessControlBackEnd.Dtos;
-using BusinessControlBackEnd.Http;
-using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,29 +12,37 @@ namespace BusinessControlBackEnd.Controllers
         private readonly ILogger<StoreController> _logger;
         private IStoreService _storeService;
         private readonly IMapper _mapper;
-        private readonly ICommandDataClient _commandDataClient;
-
 
         public StoreController(ILogger<StoreController> logger,
                                 IStoreService storeService,
-                                IMapper mapper,
-                                ICommandDataClient commandDataClient)
+                                IMapper mapper
+                                )
         {
             _logger = logger;
             _mapper = mapper;
             _storeService = storeService;
-            _commandDataClient = commandDataClient;
         }
 
 
-        [HttpGet(Name = "GetStores")]
-        public ActionResult<IEnumerable<StoreDTO>> GetStores()
+        [HttpGet]
+        public IEnumerable<StoreDTO> GetStores()
         {
             Console.WriteLine("Getting Stores...");
+            return _mapper.Map<IEnumerable<StoreDTO>>(_storeService.GetStores());
+/*
+            //var stores = _storeService.GetStores();
+//            IEnumerable<StoreDTO> dtoList = new StoreDTO;
+            List<StoreDTO> list = new List<StoreDTO>();
+            StoreDTO store =new StoreDTO
+            {
+                Id = 1,
+                Description = "asd"
+            };
 
-            var stores = _storeService.GetStores();
-
-            return Ok(_mapper.Map<IEnumerable<StoreDTO>>(stores));
+            list.Add(store);
+            */
+           // return list;
+            //return Ok(_mapper.Map<IEnumerable<StoreDTO>>(stores));
         }
 
         [HttpGet("{id}", Name = "GetStoreById")]
@@ -61,16 +67,7 @@ namespace BusinessControlBackEnd.Controllers
 
             var newStore = _storeService.CreateStore(storeDTO);
 
-            try
-            {
-                await _commandDataClient.SendStoreCommand(storeDTO);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Could not send synchronously: {ex.Message}");
-            }
-
-            return CreatedAtRoute(nameof(GetStoreById), new { Id = storeDTO.Id }, storeDTO);
+            return CreatedAtRoute(nameof(GetStoreById), new { Id = newStore.Id }, newStore);
         }
     }
 }

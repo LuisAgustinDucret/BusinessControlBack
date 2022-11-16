@@ -8,6 +8,6 @@ namespace BusinessControlBackEnd.Repositories
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Store> Stores { get; set; }
+        public DbSet<Store> Store { get; set; }
     }
 }

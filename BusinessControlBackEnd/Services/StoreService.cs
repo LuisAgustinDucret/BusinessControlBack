@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using BusinessControlBackEnd.Dtos;
-using BusinessControlBackEnd.Http;
 using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessControlBackEnd.Services
 {
-    public class StoreService
+    public class StoreService : IStoreService
     {
         private readonly IStoreRepository _repository;
         private readonly IMapper _mapper;
@@ -38,5 +37,6 @@ namespace BusinessControlBackEnd.Services
 
             return _mapper.Map<StoreDTO>(storeModel);
         }
+
     }
 }

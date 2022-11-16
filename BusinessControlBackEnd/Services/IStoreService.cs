@@ -4,7 +4,7 @@ namespace BusinessControlBackEnd.Services
 {
     public interface IStoreService
     {
-        StoreDTO GetStores(); //modificar, debe ser list.
+        IEnumerable<StoreDTO> GetStores();
         StoreDTO GetStoreById(int id);
         StoreDTO CreateStore(StoreDTO storeDTO);
     }
