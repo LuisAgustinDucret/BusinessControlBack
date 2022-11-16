@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'BusinessControlBack'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF44171DCB76431B9F17DF55BB21DF28 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3BF3370E92874DDBBD2C8C0B6FF516C4 }}
           package: .
