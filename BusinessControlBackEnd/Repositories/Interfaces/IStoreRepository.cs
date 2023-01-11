@@ -10,6 +10,8 @@ namespace BusinessControlBackEnd.Repositories
 
         Store GetStoreById(int id);
 
-        void CreateStore(Store store);
+        Store CreateStore(Store store);
+
+        Store UpdateStore(Store store);
     }
 }
