@@ -6,6 +6,6 @@ namespace BusinessControlBackEnd.Services
     {
         IEnumerable<StoreDTO> GetStores();
         StoreDTO GetStoreById(int id);
-        StoreDTO CreateStore(StoreDTO storeDTO);
+        StoreDTO CreateOrUpdateStore(StoreDTO storeDTO);
     }
 }

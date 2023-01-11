@@ -10,10 +10,10 @@ namespace BusinessControlBackEnd.Repositories
         {
             _context = context;
         }
-        public void CreateStore(Store store)
+        public Store CreateStore(Store store)
         {
             if (store == null) throw new ArgumentNullException(nameof(store));
-            _context.Store.Add(store);
+            return _context.Store.Add(store).Entity;
         }
 
         public IEnumerable<Store> GetAllStores()
@@ -24,6 +24,13 @@ namespace BusinessControlBackEnd.Repositories
         public Store GetStoreById(int id)
         {
             return _context.Store.FirstOrDefault(p => p.Id == id) ?? new Store();
+        }
+
+        public Store UpdateStore(Store store)
+        {
+            Store storeUpdated = _context.Store.Update(store).Entity;
+            SaveChanges();
+            return storeUpdated;
         }
 
         public bool SaveChanges()

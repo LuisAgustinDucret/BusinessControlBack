@@ -29,20 +29,7 @@ namespace BusinessControlBackEnd.Controllers
         {
             Console.WriteLine("Getting Stores...");
             return _mapper.Map<IEnumerable<StoreDTO>>(_storeService.GetStores());
-/*
-            //var stores = _storeService.GetStores();
-//            IEnumerable<StoreDTO> dtoList = new StoreDTO;
-            List<StoreDTO> list = new List<StoreDTO>();
-            StoreDTO store =new StoreDTO
-            {
-                Id = 1,
-                Description = "asd"
-            };
 
-            list.Add(store);
-            */
-           // return list;
-            //return Ok(_mapper.Map<IEnumerable<StoreDTO>>(stores));
         }
 
         [HttpGet("{id}", Name = "GetStoreById")]
@@ -61,13 +48,14 @@ namespace BusinessControlBackEnd.Controllers
         }
 
         [HttpPost(Name = "PostStore")]
-        public async Task<ActionResult<StoreDTO>> CreateStore(StoreDTO storeDTO)
+        public async Task<ActionResult<StoreDTO>> CreateOrUpdateStore(StoreDTO storeDTO)
         {
             Console.WriteLine("Creating Store...");
 
-            var newStore = _storeService.CreateStore(storeDTO);
+            var newStore = _storeService.CreateOrUpdateStore(storeDTO);
 
             return CreatedAtRoute(nameof(GetStoreById), new { Id = newStore.Id }, newStore);
         }
+
     }
 }

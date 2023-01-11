@@ -19,7 +19,6 @@ namespace BusinessControlBackEnd.Services
 
         public IEnumerable<StoreDTO> GetStores()
         {
-            //Mapper.Map<IEnumerable<SentEmailAttachment>, List<SentEmailAttachmentItem>>(someList);
             return _mapper.Map<IEnumerable<StoreDTO>>(_repository.GetAllStores());
         }
 
@@ -28,13 +27,16 @@ namespace BusinessControlBackEnd.Services
             return _mapper.Map<StoreDTO>(_repository.GetStoreById(id));
         }
 
-        public StoreDTO CreateStore(StoreDTO storeDTO)
+        public StoreDTO CreateOrUpdateStore(StoreDTO storeDTO)
         {
             var storeModel = _mapper.Map<Store>(storeDTO);
 
-            _repository.CreateStore(storeModel);
-            _repository.SaveChanges();
+            if (storeModel.Id == 0)
+                _repository.CreateStore(storeModel);
+            else
+                _repository.UpdateStore(storeModel);
 
+            _repository.SaveChanges();
             return _mapper.Map<StoreDTO>(storeModel);
         }
 

@@ -11,7 +11,7 @@ namespace BusinessControlBackEnd.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Stores",
+                name: "Store",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,7 +20,21 @@ namespace BusinessControlBackEnd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stores", x => x.Id);
+                    table.PrimaryKey("PK_Store", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UnidadMedida",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    Abreviatura = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UnidadMedida", x => x.Id);
                 });
         }
 
@@ -28,7 +42,10 @@ namespace BusinessControlBackEnd.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Stores");
+                name: "Store");
+
+            migrationBuilder.DropTable(
+                name: "UnidadMedida");
         }
     }
 }
