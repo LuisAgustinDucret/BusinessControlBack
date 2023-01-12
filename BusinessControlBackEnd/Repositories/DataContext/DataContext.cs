@@ -13,5 +13,7 @@ namespace BusinessControlBackEnd.Repositories
         public DbSet<UnidadMedida> UnidadMedida { get; set; }
 
         public DbSet<Rubro> Rubro { get; set; }
+
+        public DbSet<Categoria> Categoria { get; set; }
     }
 }
