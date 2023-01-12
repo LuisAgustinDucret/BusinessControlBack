@@ -1,5 +1,6 @@
 
 using BusinessControlBackEnd.Repositories;
+using BusinessControlBackEnd.Repositories.Interfaces;
 using BusinessControlBackEnd.Repositories.Repository;
 using BusinessControlBackEnd.Services;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +16,13 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IStoreRepository, StoreRepository>();
-builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
-
 builder.Services.AddScoped<IStoreService, StoreService>();
+builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
+builder.Services.AddScoped<IRubroRepository, RubroRepository>();
+builder.Services.AddScoped<IRubroService, RubroService>();
+
+
 
 
 builder.Services.AddDbContext<DataContext>(options =>
