@@ -23,7 +23,7 @@ namespace BusinessControlBackEnd.Services
         public IEnumerable<StoreDTO> GetStores()
         {
             var storesDTO = _mapper.Map<IEnumerable<StoreDTO>>(_repository.GetAllStores());
-;          
+            ;
             foreach (var storeDTO in storesDTO)
             {
                 storeDTO.Rubro = _rubroService.GetRubroById(storeDTO.RubroId);
@@ -35,12 +35,11 @@ namespace BusinessControlBackEnd.Services
         public StoreDTO GetStoreById(int id)
         {
             var storeDTO = _mapper.Map<StoreDTO>(_repository.GetStoreById(id));
-            // Console.WriteLine($"dto: {storeDto.Id}, {storeDto.RubroId}",storeDto);
             storeDTO.Rubro = _rubroService.GetRubroById(storeDTO.RubroId);
             return storeDTO;
         }
 
-        public StoreDTO CreateOrUpdateStore(StoreCreateDTO storeDTO)
+        public StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
         {
             var storeModel = _mapper.Map<Store>(storeDTO);
 

@@ -24,6 +24,7 @@ namespace BusinessControlBackEnd.Services
 
         public RubroDTO GetRubroById(int id)
         {
+
             return _mapper.Map<RubroDTO>(_repository.GetRubroById(id));
         }
 

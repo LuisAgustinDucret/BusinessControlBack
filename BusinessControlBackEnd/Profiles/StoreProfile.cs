@@ -9,8 +9,8 @@ namespace BusinessControlBackEnd.Profiles
         public StoreProfile()
         {
             CreateMap<Store, StoreDTO>().ReverseMap();
-            CreateMap<Store, StoreCreateDTO>().ReverseMap();
-            
+            CreateMap<StoreCreateUpdateDTO, Store>();
+
         }
     }
 }
