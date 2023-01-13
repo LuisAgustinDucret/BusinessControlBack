@@ -52,10 +52,20 @@ namespace BusinessControlBackEnd.Controllers
         {
             Console.WriteLine("Creating Store...");
 
-            var newStore = _storeService.CreateOrUpdateStore(storeDTO);
+            var newStore =  _storeService.CreateOrUpdateStore(storeDTO);
 
             return CreatedAtRoute(nameof(GetStoreById), new { Id = newStore.Id }, newStore);
         }
 
+        [HttpDelete(Name = "DeleteStore")]
+        public async Task<ActionResult<StoreDTO>> DeleteStore(StoreCreateUpdateDTO storeDTO)
+        {
+            Console.WriteLine("Delete Store...");
+
+            var newStore = _storeService.CreateOrUpdateStore(storeDTO);
+
+            return CreatedAtRoute(nameof(GetStoreById), new { Id = newStore.Id }, newStore);
+        }
+        
     }
 }

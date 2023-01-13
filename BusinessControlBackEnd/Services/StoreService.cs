@@ -39,16 +39,16 @@ namespace BusinessControlBackEnd.Services
             return storeDTO;
         }
 
-        public StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
+        public  StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
         {
             var storeModel = _mapper.Map<Store>(storeDTO);
 
             if (storeModel.Id == 0)
-                _repository.CreateStore(storeModel);
+                 _repository.CreateStore(storeModel);
             else
                 _repository.UpdateStore(storeModel);
 
-            _repository.SaveChanges();
+             _repository.SaveChanges();
             return _mapper.Map<StoreDTO>(storeModel);
         }
 

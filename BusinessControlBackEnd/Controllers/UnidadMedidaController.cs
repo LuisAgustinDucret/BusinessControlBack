@@ -47,9 +47,18 @@ namespace BusinessControlBackEnd.Controllers
             return NotFound();
         }
 
-
         [HttpPost(Name = "PostUnidadMedida")]
         public async Task<ActionResult<UnidadMedidaDTO>> CreateOrUpdateUnidadMedida(UnidadMedidaDTO unidadmedidaDTO)
+        {
+            Console.WriteLine("Create Or Update UnidadMedida...");
+
+            var newUnidadMedida = _unidadmedidaService.CreateOrUpdateUnidadMedida(unidadmedidaDTO);
+
+            return CreatedAtRoute(nameof(GetUnidadMedidaById), new { Id = newUnidadMedida.Id }, newUnidadMedida);
+        }
+
+        [HttpDelete(Name = "DeleteUnidadMedida")]
+        public async Task<ActionResult<UnidadMedidaDTO>> DeleteUnidadMedida(UnidadMedidaDTO unidadmedidaDTO)
         {
             Console.WriteLine("Create Or Update UnidadMedida...");
 

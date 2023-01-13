@@ -57,5 +57,15 @@ namespace BusinessControlBackEnd.Controllers
             return CreatedAtRoute(nameof(GetCategoriaById), new { Id = newCategoria.Id }, newCategoria);
         }
 
+        [HttpDelete(Name = "DeleteCategoria")]
+        public async Task<ActionResult<CategoriaDTO>> DeleteCategoria(CategoriaDTO categoriaDTO)
+        {
+            Console.WriteLine("Creating Categoria...");
+
+            var newCategoria = _categoriaService.CreateOrUpdateCategoria(categoriaDTO);
+
+            return CreatedAtRoute(nameof(GetCategoriaById), new { Id = newCategoria.Id }, newCategoria);
+        }
+
     }
 }
