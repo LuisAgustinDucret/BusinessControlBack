@@ -3,6 +3,7 @@ using BusinessControlBackEnd.Dtos;
 using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BusinessControlBackEnd.Services
 {
@@ -10,24 +11,35 @@ namespace BusinessControlBackEnd.Services
     {
         private readonly IStoreRepository _repository;
         private readonly IMapper _mapper;
+        public IRubroService _rubroService;
 
-        public StoreService(IStoreRepository repository, IMapper mapper)
+        public StoreService(IStoreRepository repository, IMapper mapper, IRubroService rubroService)
         {
             _repository = repository;
             _mapper = mapper;
+            _rubroService = rubroService;
         }
 
         public IEnumerable<StoreDTO> GetStores()
         {
-            return _mapper.Map<IEnumerable<StoreDTO>>(_repository.GetAllStores());
+            var storesDTO = _mapper.Map<IEnumerable<StoreDTO>>(_repository.GetAllStores());
+            ;
+            foreach (var storeDTO in storesDTO)
+            {
+                storeDTO.Rubro = _rubroService.GetRubroById(storeDTO.RubroId);
+            }
+
+            return storesDTO;
         }
 
         public StoreDTO GetStoreById(int id)
         {
-            return _mapper.Map<StoreDTO>(_repository.GetStoreById(id));
+            var storeDTO = _mapper.Map<StoreDTO>(_repository.GetStoreById(id));
+            storeDTO.Rubro = _rubroService.GetRubroById(storeDTO.RubroId);
+            return storeDTO;
         }
 
-        public StoreDTO CreateOrUpdateStore(StoreDTO storeDTO)
+        public StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
         {
             var storeModel = _mapper.Map<Store>(storeDTO);
 

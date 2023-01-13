@@ -15,5 +15,18 @@ namespace BusinessControlBackEnd.Repositories
         public DbSet<Rubro> Rubro { get; set; }
 
         public DbSet<Categoria> Categoria { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Rubro>()
+                .HasKey(r => r.Id);
+
+            modelBuilder.Entity<Store>()
+                .HasOne(s => s.Rubro)
+                .WithMany(r => r.Stores)
+                .HasForeignKey(s => s.RubroId)
+                .HasPrincipalKey(r => r.Id);
+
+        }
     }
 }

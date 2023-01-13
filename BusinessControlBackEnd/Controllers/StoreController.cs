@@ -48,7 +48,7 @@ namespace BusinessControlBackEnd.Controllers
         }
 
         [HttpPost(Name = "PostStore")]
-        public async Task<ActionResult<StoreDTO>> CreateOrUpdateStore(StoreDTO storeDTO)
+        public async Task<ActionResult<StoreDTO>> CreateOrUpdateStore(StoreCreateDTO storeDTO)
         {
             Console.WriteLine("Creating Store...");
 
