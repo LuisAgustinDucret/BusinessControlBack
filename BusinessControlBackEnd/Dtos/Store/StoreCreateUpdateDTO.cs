@@ -1,4 +1,4 @@
-﻿public class StoreCreateDTO
+﻿public class StoreCreateUpdateDTO
 {
     public int Id { get; set; }
     public string Description { get; set; }
