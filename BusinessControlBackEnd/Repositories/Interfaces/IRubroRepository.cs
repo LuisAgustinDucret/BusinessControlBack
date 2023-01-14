@@ -12,8 +12,6 @@ namespace BusinessControlBackEnd.Repositories.Interfaces
 
         Rubro CreateRubro(Rubro rubro);
 
-        Rubro ValidarRubroById(int id);
-
         Rubro UpdateRubro(Rubro rubro);
     }
 }

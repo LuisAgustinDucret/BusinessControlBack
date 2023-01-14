@@ -27,11 +27,6 @@ namespace BusinessControlBackEnd.Repositories.Repository
             return _context.Rubro.FirstOrDefault(p => p.Id == id) ?? new Rubro();
         }
 
-        public Rubro ValidarRubroById(int id)
-        {
-            return _context.Rubro.FirstOrDefault(p => p.Id == id) ?? null;
-        }
-
         public Rubro UpdateRubro(Rubro rubro)
         {
             Rubro rubroUpdated = _context.Rubro.Update(rubro).Entity;

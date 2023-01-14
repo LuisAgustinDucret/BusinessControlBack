@@ -41,27 +41,23 @@ namespace BusinessControlBackEnd.Services
 
         public StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
         {
+            Validations(storeDTO);
 
             var storeModel = _mapper.Map<Store>(storeDTO);
 
-            var rubro = _rubroService.ValidarRubroById(storeModel.RubroId);
+            if (storeModel.Id == 0 )
+                _repository.CreateStore(storeModel);
+            else
+                _repository.UpdateStore(storeModel);
 
-            if (rubro == null)
-
-               throw new Exception($"El Rubro id: {storeModel.RubroId},  no existe en la base de datos!");
-
-            else 
-   
-                if (storeModel.Id == 0 )
-
-                    _repository.CreateStore(storeModel);
-                else
-                    _repository.UpdateStore(storeModel);
-
-
-                _repository.SaveChanges();
-                return _mapper.Map<StoreDTO>(storeModel);
+            _repository.SaveChanges();
+            return _mapper.Map<StoreDTO>(storeModel);
         }
 
+        public void Validations(StoreCreateUpdateDTO storeDTO)
+        {
+            if (!_rubroService.ExistRubroById(storeDTO.RubroId))
+                throw new Exception($"El Rubro id: {storeDTO.RubroId},  no existe en la base de datos!");
+        }
     }
 }
