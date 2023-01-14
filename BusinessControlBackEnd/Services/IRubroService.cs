@@ -6,6 +6,7 @@ namespace BusinessControlBackEnd.Services
     {
         IEnumerable<RubroDTO> GetRubros();
         RubroDTO GetRubroById(int id);
+        RubroDTO ValidarRubroById(int id);
         RubroDTO CreateOrUpdateRubro(RubroDTO rubroDTO);
     }
 }
