@@ -57,5 +57,15 @@ namespace BusinessControlBackEnd.Controllers
             return CreatedAtRoute(nameof(GetRubroById), new { Id = newRubro.Id }, newRubro);
         }
 
+        [HttpDelete(Name = "DeleteRubro")]
+        public async Task<ActionResult<RubroDTO>> DeleteRubro(RubroDTO rubroDTO)
+        {
+            Console.WriteLine("Creating or Updating Rubro...");
+
+            var newRubro = _rubroService.CreateOrUpdateRubro(rubroDTO);
+
+            return CreatedAtRoute(nameof(GetRubroById), new { Id = newRubro.Id }, newRubro);
+        }
+
     }
 }
