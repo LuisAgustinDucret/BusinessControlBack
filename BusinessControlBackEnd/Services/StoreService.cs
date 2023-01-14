@@ -39,18 +39,25 @@ namespace BusinessControlBackEnd.Services
             return storeDTO;
         }
 
-        public  StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
+        public StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO)
         {
+            Validations(storeDTO);
+
             var storeModel = _mapper.Map<Store>(storeDTO);
 
-            if (storeModel.Id == 0)
-                 _repository.CreateStore(storeModel);
+            if (storeModel.Id == 0 )
+                _repository.CreateStore(storeModel);
             else
                 _repository.UpdateStore(storeModel);
 
-             _repository.SaveChanges();
+            _repository.SaveChanges();
             return _mapper.Map<StoreDTO>(storeModel);
         }
 
+        public void Validations(StoreCreateUpdateDTO storeDTO)
+        {
+            if (!_rubroService.ExistRubroById(storeDTO.RubroId))
+                throw new Exception($"El Rubro id: {storeDTO.RubroId},  no existe en la base de datos!");
+        }
     }
 }

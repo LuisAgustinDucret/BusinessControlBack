@@ -28,6 +28,13 @@ namespace BusinessControlBackEnd.Services
             return _mapper.Map<RubroDTO>(_repository.GetRubroById(id));
         }
 
+        public bool ExistRubroById(int id)
+        {
+            var rubroDTO = _mapper.Map<RubroDTO>(_repository.GetRubroById(id));
+
+            return rubroDTO.Id != 0 ? true : false;
+        }
+
         public RubroDTO CreateOrUpdateRubro(RubroDTO rubroDTO)
         {
             var rubroModel = _mapper.Map<Rubro>(rubroDTO);
