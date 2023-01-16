@@ -40,6 +40,13 @@ namespace BusinessControlBackEnd.Services
             return _mapper.Map<UnidadMedidaDTO>(unidadmedidaModel);
         }
 
+
+        public bool ExistUnidadMedidaById(int id)
+        {
+            var unidadMedidaDTO = _mapper.Map<UnidadMedidaDTO>(_repository.GetUnidadMedidaById(id));
+
+            return unidadMedidaDTO.Id != 0 ? true : false;
+        }
     }
 }
 

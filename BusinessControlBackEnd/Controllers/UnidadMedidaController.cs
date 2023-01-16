@@ -43,7 +43,6 @@ namespace BusinessControlBackEnd.Controllers
             {
                 return Ok(_mapper.Map<UnidadMedidaDTO>(unidadmedida));
             }
-
             return NotFound();
         }
 
