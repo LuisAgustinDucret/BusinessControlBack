@@ -23,6 +23,8 @@ builder.Services.AddScoped<IRubroRepository, RubroRepository>();
 builder.Services.AddScoped<IRubroService, RubroService>();
 builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 
 

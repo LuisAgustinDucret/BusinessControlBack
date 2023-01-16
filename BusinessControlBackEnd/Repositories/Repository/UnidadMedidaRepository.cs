@@ -19,6 +19,7 @@ namespace BusinessControlBackEnd.Repositories.Repository
 
         public UnidadMedida UpdateUnidadMedida(UnidadMedida unidadmedida)
         {
+            
             UnidadMedida unidadmedidasUpdated = _context.UnidadMedida.Update(unidadmedida).Entity;
             SaveChanges();
             return unidadmedidasUpdated;

@@ -26,6 +26,13 @@ namespace BusinessControlBackEnd.Services
             return _mapper.Map<CategoriaDTO>(_repository.GetCategoriaById(id));
         }
 
+        public bool ExistCategoriaById(int id)
+        {
+            var categoriaDTO = _mapper.Map<CategoriaDTO>(_repository.GetCategoriaById(id));
+
+            return categoriaDTO.Id != 0 ? true : false;
+        }
+
         public CategoriaDTO CreateOrUpdateCategoria(CategoriaDTO categoriaDTO)
         {
             var categoriaModel = _mapper.Map<Categoria>(categoriaDTO);

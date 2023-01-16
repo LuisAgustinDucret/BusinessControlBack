@@ -6,6 +6,7 @@ namespace BusinessControlBackEnd.Services
     {
         IEnumerable<CategoriaDTO> GetCategorias();
         CategoriaDTO GetCategoriaById(int id);
+        bool ExistCategoriaById(int id);
         CategoriaDTO CreateOrUpdateCategoria(CategoriaDTO categoriaDTO);
     }
 }

@@ -16,6 +16,8 @@ namespace BusinessControlBackEnd.Repositories
 
         public DbSet<Categoria> Categoria { get; set; }
 
+        public DbSet<Product> Product { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Rubro>()
@@ -26,6 +28,25 @@ namespace BusinessControlBackEnd.Repositories
                 .WithMany(r => r.Stores)
                 .HasForeignKey(s => s.RubroId)
                 .HasPrincipalKey(r => r.Id);
+
+            modelBuilder.Entity<Categoria>()
+                .HasKey(r => r.Id);
+
+            modelBuilder.Entity<Product>()
+                .HasOne(s => s.Categoria)
+                .WithMany(r => r.Products)
+                .HasForeignKey(s => s.CategoriaId)
+                .HasPrincipalKey(r => r.Id);
+
+
+            modelBuilder.Entity<Product>()
+                .HasOne(s => s.UnidadMedida)
+                .WithMany(r => r.Products)
+                .HasForeignKey(s => s.UnidadMedidaId)
+                .HasPrincipalKey(r => r.Id);
+
+            modelBuilder.Entity<UnidadMedida>()
+                .HasKey(r => r.Id);
 
         }
     }
