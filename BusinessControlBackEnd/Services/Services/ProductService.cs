@@ -36,8 +36,6 @@ namespace BusinessControlBackEnd.Services
         public ProductDTO GetProductById(int id)
         {
             var productDTO = _mapper.Map<ProductDTO>(_repository.GetProductById(id));
-            //nose bien si esto trae o no las entidades, no deberia pero validamos por las dudas para no devolver nulos.
-            Validations(productDTO);
 
             productDTO.Categoria = _categoriaService.GetCategoriaById(productDTO.CategoriaId);
             productDTO.UnidadMedida = _unidadmedidaService.GetUnidadMedidaById(productDTO.UnidadMedidaId);
@@ -66,6 +64,13 @@ namespace BusinessControlBackEnd.Services
 
             if (!_unidadmedidaService.ExistUnidadMedidaById(productDTO.UnidadMedidaId))
                 throw new Exception($"La Unidad de Medida con id: {productDTO.UnidadMedidaId},  no existe en la base de datos!");
+        }
+
+        public bool ExistPruductById(int id)
+        {
+            var productDTO = _mapper.Map<ProductDTO>(_repository.GetProductById(id));
+
+            return productDTO.Id != 0 ? true : false;
         }
     }
 }

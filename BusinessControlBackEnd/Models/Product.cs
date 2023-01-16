@@ -12,16 +12,16 @@ namespace BusinessControlBackEnd.Models
         [Column(TypeName = "varchar"), MaxLength(200)]
         public string Description { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(10,2)")]
         public decimal? BuyPrice { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(10,2)")]
         public decimal SellPrice { get; set; }
 
         [DefaultValue(true)]
         public bool Active { get; set; }
         
-        [Column(TypeName = "decimal(18,2)")]
+        [Column(TypeName = "decimal(10,2)")]
         public decimal Cantidad { get; set; }
 
         public int CategoriaId { get; set; }

@@ -11,11 +11,9 @@ namespace BusinessControlBackEnd.Models
     {
         public int Id { get; set; }
 
-        [Column(TypeName = "varchar"), MaxLength(200)]
         [EnumDataType(typeof(DescripcionUMEnum))]
         public DescripcionUMEnum Description { get; set; }
 
-        
         [Column(TypeName = "varchar"), MaxLength(3)]
         public string Abreviatura { get; set; }
 
