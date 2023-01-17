@@ -3,6 +3,8 @@ using BusinessControlBackEnd.Repositories;
 using BusinessControlBackEnd.Repositories.Interfaces;
 using BusinessControlBackEnd.Repositories.Repository;
 using BusinessControlBackEnd.Services;
+using BusinessControlBackEnd.Services.Interfaces;
+using BusinessControlBackEnd.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -25,6 +27,8 @@ builder.Services.AddScoped<ICategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICompoundProductRepository, CompoundProductRepository>();
+builder.Services.AddScoped<ICompoundProductService, CompoundProductService>();
 
 
 

@@ -1,6 +1,7 @@
 ﻿
 using BusinessControlBackEnd.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace BusinessControlBackEnd.Repositories
 {
@@ -17,6 +18,8 @@ namespace BusinessControlBackEnd.Repositories
         public DbSet<Categoria> Categoria { get; set; }
 
         public DbSet<Product> Product { get; set; }
+
+        public DbSet<CompoundProduct> CompoundProduct { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -48,6 +51,11 @@ namespace BusinessControlBackEnd.Repositories
             modelBuilder.Entity<UnidadMedida>()
                 .HasKey(r => r.Id);
 
+            modelBuilder.Entity<CompoundProduct>()
+                .HasKey(cp => new { cp.CompoundProductId, cp.ProductId });
+
+            modelBuilder.Entity<Product>()
+                .ToTable(tb => tb.HasTrigger("tr_Product_Insert"));
         }
     }
 }

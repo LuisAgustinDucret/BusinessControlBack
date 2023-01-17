@@ -46,6 +46,10 @@ namespace BusinessControlBackEnd.Services
         {
             Validations(productDTO);
 
+            if (!productDTO.IsCompoundProduct)
+                productDTO.CompoundProductId = null;
+
+
             var productModel = _mapper.Map<Product>(productDTO);
 
             if (productModel.Id == 0)
