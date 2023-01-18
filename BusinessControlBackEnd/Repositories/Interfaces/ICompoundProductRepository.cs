@@ -13,6 +13,8 @@ namespace BusinessControlBackEnd.Repositories.Interfaces
         CompoundProduct CreateCompoundProduct(CompoundProduct compoundProduct);
 
         CompoundProduct UpdateCompoundProduct(CompoundProduct compoundProduct);
+
+        void DeleteCompoundProduct(int productId, int compoundProductId);
     }
 }
 

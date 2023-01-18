@@ -9,6 +9,8 @@ namespace BusinessControlBackEnd.Repositories
 
         IEnumerable<Product> GetAllProducts();
 
+        IEnumerable<Product> GetAllParentProducts();
+
         Product GetProductById(int id);
 
         Product CreateProduct(Product product);

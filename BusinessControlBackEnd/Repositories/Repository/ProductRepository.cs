@@ -1,4 +1,5 @@
 ﻿using BusinessControlBackEnd.Models;
+using System.Linq;
 
 namespace BusinessControlBackEnd.Repositories.Repository
 {
@@ -21,10 +22,16 @@ namespace BusinessControlBackEnd.Repositories.Repository
             return _context.Product.ToList();
         }
 
+        public IEnumerable<Product> GetAllParentProducts()
+        {
+            return _context.Product.Where(p => p.CompoundProductId != null).ToList();
+        }
+
         public Product GetProductById(int id)
         {
             return _context.Product.FirstOrDefault(p => p.Id == id) ?? new Product();
         }
+
 
         public Product UpdateProduct(Product product)
         {

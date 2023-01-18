@@ -27,6 +27,14 @@ namespace BusinessControlBackEnd.Repositories.Repository
             return _context.CompoundProduct.FirstOrDefault(p => p.ProductId == productId && p.CompoundProductId == compoundProductId) ?? new CompoundProduct();
         }
 
+        public void DeleteCompoundProduct(int productId, int compoundProductId)
+        {
+            var table = _context.CompoundProduct.FirstOrDefault(p => p.ProductId == productId && p.CompoundProductId == compoundProductId);
+
+            _context.CompoundProduct.Remove(table);
+            SaveChanges();
+        }
+
         public CompoundProduct UpdateCompoundProduct(CompoundProduct compoundProduct)
         {
             CompoundProduct compoundProductUpdated = _context.CompoundProduct.Update(compoundProduct).Entity;

@@ -6,6 +6,7 @@ namespace BusinessControlBackEnd.Services.Interfaces
     {
         IEnumerable<CompoundProductDTO> GetCompoundProducts();
         CompoundProductDTO GetCompoundProductByIds(int productId, int compoundProductId);
-        CompoundProductDTO CreateOrUpdateCompoundProduct(CompoundProductDTO compoundproductDTO);
+        void CreateOrUpdateCompoundProduct(CompoundProductDTO compoundproductDTO);
+        void DeleteCompoundProduct(int productId, int compoundProductId);
     }
 }

@@ -3,21 +3,24 @@ using BusinessControlBackEnd.Dtos;
 using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Repositories;
 using BusinessControlBackEnd.Repositories.Interfaces;
+using BusinessControlBackEnd.Repositories.Repository;
 using BusinessControlBackEnd.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessControlBackEnd.Services.Services
 {
     public class CompoundProductService : ICompoundProductService
     {
+        private readonly IProductService _productService;
         private readonly ICompoundProductRepository _repository;
         private readonly IMapper _mapper;
 
 
-        public CompoundProductService(ICompoundProductRepository repository, IMapper mapper)
+        public CompoundProductService(ICompoundProductRepository repository, IMapper mapper, IProductService productService)
         {
             _repository = repository;
             _mapper = mapper;
-
+            _productService = productService;
         }
 
         public IEnumerable<CompoundProductDTO> GetCompoundProducts()
@@ -34,18 +37,32 @@ namespace BusinessControlBackEnd.Services.Services
             return compoundproductDTO;
         }
 
-        public CompoundProductDTO CreateOrUpdateCompoundProduct(CompoundProductDTO compoundproductDTO)
-
+        public void DeleteCompoundProduct(int productId, int compoundProductId)
         {
-            var compoundproductModel = _mapper.Map<CompoundProduct>(compoundproductDTO);
+            _repository.DeleteCompoundProduct(productId, compoundProductId);
+        }
 
-            if (compoundproductModel.ProductId == 0)
-                _repository.CreateCompoundProduct(compoundproductModel);
-            else
-                _repository.UpdateCompoundProduct(compoundproductModel);
+        public void CreateOrUpdateCompoundProduct(CompoundProductDTO compoundproductDTO)
+        {
+            CompoundProductDTO cpToDatabase;
+            try
+            {
+
+            foreach (var productId in compoundproductDTO.ProductsId)
+            {
+                _repository.CreateCompoundProduct(new CompoundProduct()
+                {
+                    CompoundProductId = compoundproductDTO.CompoundProductId,
+                    ProductId = productId
+                }) ;
+            }
+            } catch (Exception ex)
+            {
+                // = $"Hubo un problema al querer generar los productos en el CompoundProduct con id {compoundproductDTO.CompoundProductId}!";
+                throw ex;
+            }
 
             _repository.SaveChanges();
-            return _mapper.Map<CompoundProductDTO>(compoundproductModel);
         }
 
 
