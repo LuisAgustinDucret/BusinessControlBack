@@ -1,9 +1,6 @@
 
 using BusinessControlBackEnd.Repositories;
-using BusinessControlBackEnd.Repositories.Interfaces;
-using BusinessControlBackEnd.Repositories.Repository;
 using BusinessControlBackEnd.Services;
-using BusinessControlBackEnd.Services.Services;
 using Microsoft.EntityFrameworkCore;
 
 
