@@ -4,7 +4,6 @@ using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Repositories;
 using BusinessControlBackEnd.Repositories.Interfaces;
 using BusinessControlBackEnd.Repositories.Repository;
-using BusinessControlBackEnd.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessControlBackEnd.Services.Services
@@ -30,9 +29,9 @@ namespace BusinessControlBackEnd.Services.Services
             return compoundproductsDTO;
         }
 
-        public CompoundProductDTO GetCompoundProductByIds(int productId, int compoundProductId)
+        public CompoundProductDTO GetCompoundProductById(int compoundProductId)
         {
-            var compoundproductDTO = _mapper.Map<CompoundProductDTO>(_repository.GetCompoundProductByIds(productId,compoundProductId));
+            var compoundproductDTO = _mapper.Map<CompoundProductDTO>(_repository.GetCompoundProductById(compoundProductId));
 
             return compoundproductDTO;
         }

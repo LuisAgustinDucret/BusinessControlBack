@@ -1,11 +1,11 @@
 ﻿using BusinessControlBackEnd.Dtos;
 
-namespace BusinessControlBackEnd.Services.Interfaces
+namespace BusinessControlBackEnd.Services
 {
     public interface ICompoundProductService
     {
         IEnumerable<CompoundProductDTO> GetCompoundProducts();
-        CompoundProductDTO GetCompoundProductByIds(int productId, int compoundProductId);
+        CompoundProductDTO GetCompoundProductById(int compoundProductId);
         void CreateOrUpdateCompoundProduct(CompoundProductDTO compoundproductDTO);
         void DeleteCompoundProduct(int productId, int compoundProductId);
     }

@@ -22,9 +22,9 @@ namespace BusinessControlBackEnd.Repositories.Repository
             return _context.CompoundProduct.ToList();
         }
 
-        public CompoundProduct GetCompoundProductByIds(int productId, int compoundProductId)
+        public CompoundProduct GetCompoundProductById(int compoundProductId)
         {
-            return _context.CompoundProduct.FirstOrDefault(p => p.ProductId == productId && p.CompoundProductId == compoundProductId) ?? new CompoundProduct();
+            return _context.CompoundProduct.FirstOrDefault(p => p.CompoundProductId == compoundProductId) ?? new CompoundProduct();
         }
 
         public void DeleteCompoundProduct(int productId, int compoundProductId)

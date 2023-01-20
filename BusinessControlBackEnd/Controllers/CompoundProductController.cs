@@ -2,7 +2,6 @@
 using BusinessControlBackEnd.Dtos;
 using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Services;
-using BusinessControlBackEnd.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessControlBackEnd.Controllers
@@ -16,7 +15,8 @@ namespace BusinessControlBackEnd.Controllers
         private readonly IMapper _mapper;
 
         public CompoundProductController(ILogger<CompoundProductController> logger,
-                                IMapper mapper, ICompoundProductService compoundProductService
+                                IMapper mapper,
+                                ICompoundProductService compoundProductService
                                 )
         {
             _logger = logger;

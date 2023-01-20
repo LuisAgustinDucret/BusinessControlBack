@@ -8,7 +8,7 @@ namespace BusinessControlBackEnd.Repositories.Interfaces
 
         IEnumerable<CompoundProduct> GetAllCompoundProducts();
 
-        CompoundProduct GetCompoundProductByIds(int productId, int compoundProductId);
+        CompoundProduct GetCompoundProductById(int compoundProductId);
 
         CompoundProduct CreateCompoundProduct(CompoundProduct compoundProduct);
 

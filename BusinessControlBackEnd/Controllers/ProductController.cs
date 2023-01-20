@@ -36,7 +36,7 @@ namespace BusinessControlBackEnd.Controllers
         [HttpGet]
         public IEnumerable<ProductDTO> GetParentProducts()
         {
-            Console.WriteLine("Getting Products...");
+            Console.WriteLine("Getting ParentsProducts...");
             return _mapper.Map<IEnumerable<ProductDTO>>(_productService.GetParentProducts());
 
         }
