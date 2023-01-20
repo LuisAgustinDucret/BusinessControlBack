@@ -1,7 +1,6 @@
 ﻿using BusinessControlBackEnd.Models;
-using BusinessControlBackEnd.Repositories.Interfaces;
 
-namespace BusinessControlBackEnd.Repositories.Repository
+namespace BusinessControlBackEnd.Repositories
 {
     public class CompoundProductRepository : ICompoundProductRepository
     {

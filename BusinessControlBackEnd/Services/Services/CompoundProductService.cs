@@ -2,8 +2,6 @@
 using BusinessControlBackEnd.Dtos;
 using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Repositories;
-using BusinessControlBackEnd.Repositories.Interfaces;
-using BusinessControlBackEnd.Repositories.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BusinessControlBackEnd.Services

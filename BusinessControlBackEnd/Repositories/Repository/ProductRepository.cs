@@ -1,7 +1,7 @@
 ﻿using BusinessControlBackEnd.Models;
 using System.Linq;
 
-namespace BusinessControlBackEnd.Repositories.Repository
+namespace BusinessControlBackEnd.Repositories
 {
     public class ProductRepository : IProductRepository
     {

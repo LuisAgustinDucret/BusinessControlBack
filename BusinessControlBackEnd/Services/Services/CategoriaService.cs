@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using BusinessControlBackEnd.Dtos;
 using BusinessControlBackEnd.Models;
-using BusinessControlBackEnd.Repositories.Interfaces;
+using BusinessControlBackEnd.Repositories;
+
 
 namespace BusinessControlBackEnd.Services
 {

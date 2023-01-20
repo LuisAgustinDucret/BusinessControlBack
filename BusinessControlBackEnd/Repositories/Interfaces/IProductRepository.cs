@@ -1,7 +1,6 @@
 ﻿using BusinessControlBackEnd.Models;
 
 namespace BusinessControlBackEnd.Repositories
-
 {
     public interface IProductRepository
     {
