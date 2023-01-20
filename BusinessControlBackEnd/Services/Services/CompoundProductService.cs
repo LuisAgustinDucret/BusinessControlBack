@@ -6,7 +6,7 @@ using BusinessControlBackEnd.Repositories.Interfaces;
 using BusinessControlBackEnd.Repositories.Repository;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BusinessControlBackEnd.Services.Services
+namespace BusinessControlBackEnd.Services
 {
     public class CompoundProductService : ICompoundProductService
     {

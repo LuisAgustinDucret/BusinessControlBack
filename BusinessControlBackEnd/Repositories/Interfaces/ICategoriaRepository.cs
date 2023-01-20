@@ -1,6 +1,6 @@
 ﻿using BusinessControlBackEnd.Models;
 
-namespace BusinessControlBackEnd.Repositories.Interfaces
+namespace BusinessControlBackEnd.Repositories
 {
     public interface ICategoriaRepository
     {
