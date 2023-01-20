@@ -29,5 +29,8 @@ namespace BusinessControlBackEnd.Models
 
         public int UnidadMedidaId { get; set; }
         public UnidadMedida UnidadMedida { get; set; }
+
+        [DefaultValue(null)]
+        public int? CompoundProductId { get; set; }
     }
 }

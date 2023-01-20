@@ -32,6 +32,16 @@ namespace BusinessControlBackEnd.Controllers
 
         }
 
+        [Route("/Product/Parents")]
+        [HttpGet]
+        public IEnumerable<ProductDTO> GetParentProducts()
+        {
+            Console.WriteLine("Getting ParentsProducts...");
+            return _mapper.Map<IEnumerable<ProductDTO>>(_productService.GetParentProducts());
+
+        }
+
+
         [HttpGet("{id}", Name = "GetProductById")]
         public ActionResult<ProductDTO> GetProductById(int id)
         {

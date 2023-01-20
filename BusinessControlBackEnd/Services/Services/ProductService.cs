@@ -33,6 +33,11 @@ namespace BusinessControlBackEnd.Services
             return productsDTO;
         }
 
+        public IEnumerable<ProductDTO> GetParentProducts()
+        {
+            return _mapper.Map<IEnumerable<ProductDTO>>(_repository.GetAllParentProducts());
+        }
+
         public ProductDTO GetProductById(int id)
         {
             var productDTO = _mapper.Map<ProductDTO>(_repository.GetProductById(id));
@@ -42,9 +47,13 @@ namespace BusinessControlBackEnd.Services
             return productDTO;
         }
 
+
         public ProductDTO CreateOrUpdateProduct(ProductCreateUpdateDTO productDTO)
         {
             Validations(productDTO);
+
+            if (!productDTO.IsCompoundProduct)
+                productDTO.CompoundProductId = null;
 
             var productModel = _mapper.Map<Product>(productDTO);
 

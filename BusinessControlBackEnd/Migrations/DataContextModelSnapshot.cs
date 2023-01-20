@@ -43,6 +43,21 @@ namespace BusinessControlBackEnd.Migrations
                     b.ToTable("Categoria");
                 });
 
+            modelBuilder.Entity("BusinessControlBackEnd.Models.CompoundProduct", b =>
+                {
+                    b.Property<int>("CompoundProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CompoundProductId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CompoundProduct");
+                });
+
             modelBuilder.Entity("BusinessControlBackEnd.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -55,12 +70,16 @@ namespace BusinessControlBackEnd.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal?>("BuyPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<decimal>("Cantidad")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("CategoriaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CompoundProductId")
+                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -69,7 +88,7 @@ namespace BusinessControlBackEnd.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<decimal>("SellPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(10,2)");
 
                     b.Property<int>("UnidadMedidaId")
                         .HasColumnType("int");
@@ -146,14 +165,23 @@ namespace BusinessControlBackEnd.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar");
+                    b.Property<int>("Description")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("UnidadMedida");
+                });
+
+            modelBuilder.Entity("BusinessControlBackEnd.Models.CompoundProduct", b =>
+                {
+                    b.HasOne("BusinessControlBackEnd.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("BusinessControlBackEnd.Models.Product", b =>

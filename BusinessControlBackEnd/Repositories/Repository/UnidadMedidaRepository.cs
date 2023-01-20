@@ -1,8 +1,8 @@
 ﻿using BusinessControlBackEnd.Models;
 using System.Reflection.Metadata.Ecma335;
 
-namespace BusinessControlBackEnd.Repositories.Repository
-{
+namespace BusinessControlBackEnd.Repositories
+    {
     public class UnidadMedidaRepository : IUnidadMedidaRepository
     {
         private readonly DataContext _context;

@@ -1,5 +1,4 @@
-﻿using BusinessControlBackEnd.Migrations;
-
+﻿
 namespace BusinessControlBackEnd.Dtos
 {
     public class StoreDTO
