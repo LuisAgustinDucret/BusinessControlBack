@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessControlBackEnd.Dtos;
+
 using BusinessControlBackEnd.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -67,6 +68,14 @@ namespace BusinessControlBackEnd.Controllers
 
             return CreatedAtRoute(nameof(GetStoreById), new { Id = newStore.Id }, newStore);
         }
-        
+
+        [HttpGet("/StoreProducts", Name = "GetStoreProductsById")]
+        public StoreWithProductsDTO GetStoreWithProductsAsync(int storeId)
+        {
+            Console.WriteLine("Getting Stores...");
+            return _storeService.GetStoreWithProducts(storeId);
+
+        }
+
     }
 }

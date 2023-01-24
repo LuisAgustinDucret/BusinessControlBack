@@ -1,4 +1,5 @@
 ﻿using BusinessControlBackEnd.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BusinessControlBackEnd.Repositories
 {
@@ -31,6 +32,17 @@ namespace BusinessControlBackEnd.Repositories
             Store storeUpdated = _context.Store.Update(store).Entity;
             SaveChanges();
             return storeUpdated;
+        }
+
+        public Store GetStoreWithProducts(int storeId)
+        {
+            var products = _context.Store
+                                .Include(s => s.ProductsFS)
+                                .ThenInclude(ps => ps.Product)
+                                .FirstOrDefault(s => s.Id == storeId);
+
+
+            return products;
         }
 
         public bool SaveChanges()

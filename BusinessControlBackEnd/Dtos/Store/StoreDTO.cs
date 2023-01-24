@@ -8,5 +8,6 @@ namespace BusinessControlBackEnd.Dtos
         public bool Active { get; set; }
         public int RubroId { get; set; }
         public RubroDTO Rubro { get; set; }
+
     }
 }

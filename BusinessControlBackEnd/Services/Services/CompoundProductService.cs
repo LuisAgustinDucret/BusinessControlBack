@@ -24,6 +24,8 @@ namespace BusinessControlBackEnd.Services
         {
             var compoundproductsDTO = _mapper.Map<IEnumerable<CompoundProductDTO>>(_repository.GetAllCompoundProducts());
 
+
+
             return compoundproductsDTO;
         }
 

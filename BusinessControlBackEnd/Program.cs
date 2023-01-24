@@ -25,7 +25,8 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICompoundProductRepository, CompoundProductRepository>();
 builder.Services.AddScoped<ICompoundProductService, CompoundProductService>();
-
+builder.Services.AddScoped<IProductStoreRepository, ProductStoreRepository>();
+builder.Services.AddScoped<IProductStoreService, ProductStoreService>();
 
 
 

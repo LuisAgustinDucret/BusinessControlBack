@@ -32,5 +32,7 @@ namespace BusinessControlBackEnd.Models
 
         [DefaultValue(null)]
         public int? CompoundProductId { get; set; }
+        public ICollection<ProductStore> StoresFP { get; set; }
+
     }
 }

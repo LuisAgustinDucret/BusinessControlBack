@@ -1,4 +1,5 @@
-﻿namespace BusinessControlBackEnd.Dtos
+﻿
+namespace BusinessControlBackEnd.Dtos
 {
     public class ProductDTO : ProductCreateUpdateDTO
     {

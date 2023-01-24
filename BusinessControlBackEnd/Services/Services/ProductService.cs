@@ -28,6 +28,7 @@ namespace BusinessControlBackEnd.Services
             {
                 productDTO.Categoria = _categoriaService.GetCategoriaById(productDTO.CategoriaId);
                 productDTO.UnidadMedida = _unidadmedidaService.GetUnidadMedidaById(productDTO.UnidadMedidaId);
+    
             }
 
             return productsDTO;
@@ -44,6 +45,8 @@ namespace BusinessControlBackEnd.Services
 
             productDTO.Categoria = _categoriaService.GetCategoriaById(productDTO.CategoriaId);
             productDTO.UnidadMedida = _unidadmedidaService.GetUnidadMedidaById(productDTO.UnidadMedidaId);
+
+
             return productDTO;
         }
 
