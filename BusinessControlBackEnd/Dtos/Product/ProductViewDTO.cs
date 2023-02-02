@@ -10,7 +10,7 @@ public class ProductViewDTO
     public int Id { get; set; }
     public string Description { get; set; }
     public bool Active { get; set; }
-    public int buyPrice { get; set; }
-    public int sellPrice { get; set; }
+    public int BuyPrice { get; set; }
+    public int SellPrice { get; set; }
     public decimal Cantidad { get; set; }
 }             

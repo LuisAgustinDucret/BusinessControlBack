@@ -34,11 +34,11 @@ namespace BusinessControlBackEnd.Controllers
         }
 
         [HttpDelete]
-        public IActionResult DeleteProductStore(int productId, int productStoreId)
+        public IActionResult DeleteProductStore(int productId, int storeId)
         {
             Console.WriteLine("Searching ProductStore...");
 
-            _productStoreService.DeleteProductStore(productId, productStoreId);
+            _productStoreService.DeleteProductStore(productId, storeId);
             return Ok();
         }
 

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using BusinessControlBackEnd.Dtos;
-using BusinessControlBackEnd.Dtos;
 using BusinessControlBackEnd.Models;
 using BusinessControlBackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -47,7 +46,7 @@ namespace BusinessControlBackEnd.Services
 
             var storeModel = _mapper.Map<Store>(storeDTO);
 
-            if (storeModel.Id == 0 )
+            if (storeModel.Id == 0)
                 _repository.CreateStore(storeModel);
             else
                 _repository.UpdateStore(storeModel);
@@ -57,12 +56,10 @@ namespace BusinessControlBackEnd.Services
         }
 
 
-        public  StoreWithProductsDTO GetStoreWithProducts(int storeId)
+        public StoreWithProductsDTO GetStoreWithProducts(int storeId)
         {
             var store = _repository.GetStoreWithProducts(storeId);
-            var hola = _mapper.Map<StoreWithProductsDTO>(store);
-             
-            return hola;
+            return _mapper.Map<StoreWithProductsDTO>(store);
         }
 
 
