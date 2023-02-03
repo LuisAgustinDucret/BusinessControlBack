@@ -16,6 +16,8 @@ namespace BusinessControlBackEnd.Models
         public bool Active { get; set; }
         public int RubroId { get; set; }
         public Rubro Rubro { get; set; }
+
+        public ICollection<ProductStore> ProductsFS { get; set; }
     }
 }
 

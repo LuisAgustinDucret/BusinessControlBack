@@ -1,4 +1,5 @@
-﻿using BusinessControlBackEnd.Models;
+﻿using BusinessControlBackEnd.Dtos;
+using BusinessControlBackEnd.Models;
 
 namespace BusinessControlBackEnd.Repositories
 {
@@ -13,5 +14,7 @@ namespace BusinessControlBackEnd.Repositories
         Store CreateStore(Store store);
 
         Store UpdateStore(Store store);
+
+        Store GetStoreWithProducts(int storeId);
     }
 }

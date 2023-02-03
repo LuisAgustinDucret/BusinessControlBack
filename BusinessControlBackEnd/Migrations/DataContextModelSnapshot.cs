@@ -79,7 +79,6 @@ namespace BusinessControlBackEnd.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("CompoundProductId")
-                        .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -99,7 +98,25 @@ namespace BusinessControlBackEnd.Migrations
 
                     b.HasIndex("UnidadMedidaId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Product", t =>
+                        {
+                            t.HasTrigger("tr_Product_Insert");
+                        });
+                });
+
+            modelBuilder.Entity("BusinessControlBackEnd.Models.ProductStore", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StoreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "StoreId");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("ProductStore");
                 });
 
             modelBuilder.Entity("BusinessControlBackEnd.Models.Rubro", b =>
@@ -203,6 +220,25 @@ namespace BusinessControlBackEnd.Migrations
                     b.Navigation("UnidadMedida");
                 });
 
+            modelBuilder.Entity("BusinessControlBackEnd.Models.ProductStore", b =>
+                {
+                    b.HasOne("BusinessControlBackEnd.Models.Product", "Product")
+                        .WithMany("ProductStores")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BusinessControlBackEnd.Models.Store", "Store")
+                        .WithMany("ProductStores")
+                        .HasForeignKey("StoreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Store");
+                });
+
             modelBuilder.Entity("BusinessControlBackEnd.Models.Store", b =>
                 {
                     b.HasOne("BusinessControlBackEnd.Models.Rubro", "Rubro")
@@ -219,9 +255,19 @@ namespace BusinessControlBackEnd.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("BusinessControlBackEnd.Models.Product", b =>
+                {
+                    b.Navigation("ProductStores");
+                });
+
             modelBuilder.Entity("BusinessControlBackEnd.Models.Rubro", b =>
                 {
                     b.Navigation("Stores");
+                });
+
+            modelBuilder.Entity("BusinessControlBackEnd.Models.Store", b =>
+                {
+                    b.Navigation("ProductStores");
                 });
 
             modelBuilder.Entity("BusinessControlBackEnd.Models.UnidadMedida", b =>

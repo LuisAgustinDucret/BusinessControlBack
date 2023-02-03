@@ -10,6 +10,7 @@ namespace BusinessControlBackEnd.Profiles
         {
             CreateMap<Product, ProductDTO>().ReverseMap();
             CreateMap<ProductCreateUpdateDTO, Product>();
+            CreateMap<Product, ProductViewDTO>();
         }
     }
 }

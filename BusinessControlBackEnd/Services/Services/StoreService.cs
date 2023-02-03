@@ -36,6 +36,7 @@ namespace BusinessControlBackEnd.Services
         {
             var storeDTO = _mapper.Map<StoreDTO>(_repository.GetStoreById(id));
             storeDTO.Rubro = _rubroService.GetRubroById(storeDTO.RubroId);
+
             return storeDTO;
         }
 
@@ -45,7 +46,7 @@ namespace BusinessControlBackEnd.Services
 
             var storeModel = _mapper.Map<Store>(storeDTO);
 
-            if (storeModel.Id == 0 )
+            if (storeModel.Id == 0)
                 _repository.CreateStore(storeModel);
             else
                 _repository.UpdateStore(storeModel);
@@ -53,6 +54,13 @@ namespace BusinessControlBackEnd.Services
             _repository.SaveChanges();
             return _mapper.Map<StoreDTO>(storeModel);
         }
+
+
+        public StoreWithProductsDTO GetStoreWithProducts(int storeId)
+        {
+            return _mapper.Map<StoreWithProductsDTO>(_repository.GetStoreWithProducts(storeId));
+        }
+
 
         public void Validations(StoreCreateUpdateDTO storeDTO)
         {

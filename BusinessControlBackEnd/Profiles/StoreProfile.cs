@@ -10,7 +10,9 @@ namespace BusinessControlBackEnd.Profiles
         {
             CreateMap<Store, StoreDTO>().ReverseMap();
             CreateMap<StoreCreateUpdateDTO, Store>();
-
+            CreateMap<Store, StoreWithProductsDTO>()
+                .ForMember(dto => dto.Products,
+                       opt => opt.MapFrom(store => store.ProductsFS.Select(ps => ps.Product)));
         }
     }
 }

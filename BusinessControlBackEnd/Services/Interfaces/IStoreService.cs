@@ -1,5 +1,6 @@
 ﻿using BusinessControlBackEnd.Dtos;
 
+
 namespace BusinessControlBackEnd.Services
 {
     public interface IStoreService
@@ -7,5 +8,6 @@ namespace BusinessControlBackEnd.Services
         IEnumerable<StoreDTO> GetStores();
         StoreDTO GetStoreById(int id);
         StoreDTO CreateOrUpdateStore(StoreCreateUpdateDTO storeDTO);
+        StoreWithProductsDTO GetStoreWithProducts(int storeId);
     }
 }
