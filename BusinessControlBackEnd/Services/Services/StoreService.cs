@@ -58,8 +58,7 @@ namespace BusinessControlBackEnd.Services
 
         public StoreWithProductsDTO GetStoreWithProducts(int storeId)
         {
-            var store = _repository.GetStoreWithProducts(storeId);
-            return _mapper.Map<StoreWithProductsDTO>(store);
+            return _mapper.Map<StoreWithProductsDTO>(_repository.GetStoreWithProducts(storeId));
         }
 
 

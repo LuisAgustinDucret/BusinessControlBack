@@ -4,9 +4,9 @@ namespace BusinessControlBackEnd.Services
 {
     public interface IProductStoreService
     {
-        IEnumerable<ProductStoreDTO> GetProductStores();
-        ProductStoreDTO GetProductStoreById(int productStoreId);
-        void CreateOrUpdateProductStore(ProductStoreDTO productStoreDTO);
+        IEnumerable<StoreProductsDTO> GetProductStores();
+        StoreProductsDTO GetProductStoreById(int productStoreId);
+        void CreateOrUpdateProductStore(StoreProductsDTO productStoreDTO);
         void DeleteProductStore(int productId, int productStoreId);
     }
 }

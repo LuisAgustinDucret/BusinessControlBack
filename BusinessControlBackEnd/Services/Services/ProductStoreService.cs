@@ -19,16 +19,16 @@ namespace BusinessControlBackEnd.Services
             _productService = productService;
         }
 
-        public IEnumerable<ProductStoreDTO> GetProductStores()
+        public IEnumerable<StoreProductsDTO> GetProductStores()
         {
-            var productStoresDTO = _mapper.Map<IEnumerable<ProductStoreDTO>>(_repository.GetAllProductStores());
+            var productStoresDTO = _mapper.Map<IEnumerable<StoreProductsDTO>>(_repository.GetAllProductStores());
 
             return productStoresDTO;
         }
 
-        public ProductStoreDTO GetProductStoreById(int compoundProductId)
+        public StoreProductsDTO GetProductStoreById(int compoundProductId)
         {
-            var productStoreDTO = _mapper.Map<ProductStoreDTO>(_repository.GetProductStoreById(compoundProductId));
+            var productStoreDTO = _mapper.Map<StoreProductsDTO>(_repository.GetProductStoreById(compoundProductId));
 
             return productStoreDTO;
         }
@@ -38,9 +38,9 @@ namespace BusinessControlBackEnd.Services
             _repository.DeleteProductStore(productId, compoundProductId);
         }
 
-        public void CreateOrUpdateProductStore(ProductStoreDTO productStoreDTO)
+        public void CreateOrUpdateProductStore(StoreProductsDTO productStoreDTO)
         {
-            ProductStoreDTO cpToDatabase;
+            StoreProductsDTO cpToDatabase;
             try
             {
 

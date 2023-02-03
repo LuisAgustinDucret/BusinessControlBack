@@ -24,7 +24,7 @@ namespace BusinessControlBackEnd.Controllers
         }
 
         [HttpPost(Name = "PostProductStore")]
-        public IActionResult CreateOrUpdateProductStore(ProductStoreDTO productStoreDTO)
+        public IActionResult CreateOrUpdateProductStore(StoreProductsDTO productStoreDTO)
         {
             Console.WriteLine("Creating ProductStore...");
 
